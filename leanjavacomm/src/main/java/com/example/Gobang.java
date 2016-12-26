@@ -139,19 +139,20 @@ public class Gobang
 		// 这是用于获取键盘输入的方法
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String inputStr = null;
+
 		// br.readLine()：每当在键盘上输入一行内容按回车，用户刚输入的内容将被br读取到。
 		while ((inputStr = br.readLine()) != null)
 		{
-			if(inputStr.matches("[ |\\t]*[\\d]*,[\\d]*")!=true){
-				System.out.println("输入的数据超出的棋盘范围");
+			if(inputStr.matches("[\\s]*[\\d]+[\\s]*,[\\s]*[\\d]+[\\s]*")!=true){
+				System.out.println("请输入以“，”分割的数字");
 				continue;
 			}
 
 			// 将用户输入的字符串以逗号（,）作为分隔符，分隔成2个字符串
-			String[] posStrArr = inputStr.split("[,| ]");
+			String[] posStrArr = inputStr.split(",");
 			// 将2个字符串转换成用户下棋的座标
-			int xPos = Integer.parseInt(posStrArr[0]);
-			int yPos = Integer.parseInt(posStrArr[1]);
+			int xPos = Integer.parseInt(posStrArr[0].trim());
+			int yPos = Integer.parseInt(posStrArr[1].trim());
 
 
 			// 把对应的数组元素赋为"●"。
